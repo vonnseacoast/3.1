@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>p:w/soul Mobile Wireframe</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #1a1a1a;
+        color: #fff;
+        line-height: 1.6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    /* Mobile Frame */
+    .phone-frame {
+        width: 375px;
+        height: 812px;
+        background: #000;
+        border: 3px solid #333;
+        border-radius: 25px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Header */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        z-index: 100;
+        border-bottom: 1px solid #333;
+    }
+
+    .logo {
+        font-size: 18px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #ffffff, #00ffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Main Content */
+    .content {
+        padding-top: 60px;
+        padding-bottom: 80px;
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    /* Prism Hero Section */
+    .prism-hero {
+        min-height: 100vh;
+        padding: 40px 20px;
+        background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+    }
+
+    .prism-title {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, #ffffff, #00ffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .prism-subtitle {
+        font-size: 16px;
+        color: #999;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    /* Story Display */
+    .story-display {
+        background: #0a0a0a;
+        border-radius: 16px;
+        padding: 30px 24px;
+        margin: 20px 0;
+        border: 1px solid #1a1a1a;
+        min-height: 400px;
+    }
+
+    .story-content {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #e0e0e0;
+        margin-bottom: 24px;
+    }
+
+    .story-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid #222;
+    }
+
+    .story-category {
+        font-size: 13px;
+        color: #00ffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .story-stats {
+        display: flex;
+        gap: 20px;
+        font-size: 13px;
+        color: #666;
+    }
+
+    /* Prism Actions */
+    .prism-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 30px 0;
+    }
+
+    .btn-primary {
+        background: #00ffff;
+        color: #000;
+        border: none;
+        padding: 16px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .btn-primary:hover {
+        transform: scale(0.98);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: #00ffff;
+        border: 2px solid #00ffff;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+        transform: scale(0.98);
+    }
+
+    /* Community Counter */
+    .community-stats {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+        background: #0a0a0a;
+        border-radius: 12px;
+        margin: 20px 0;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #00ffff;
+    }
+
+    .stat-label {
+        font-size: 12px;
+        color: #666;
+        margin-top: 4px;
+    }
+
+    /* Book Section (Secondary) */
+    .book-section {
+        padding: 40px 20px;
+        background: #0a0a0a;
+        border-top: 1px solid #222;
+    }
+
+    .section-label {
+        font-size: 12px;
+        color: #00ffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+    }
+
+    .book-preview {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        padding: 20px;
+        background: #000;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .book-preview:hover {
+        transform: scale(0.98);
+    }
+
+    .book-cover-small {
+        width: 80px;
+        height: 110px;
+        background: linear-gradient(135deg, #00ffff, #0088ff);
+        border-radius: 4px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: bold;
+        color: #000;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .book-info {
+        flex: 1;
+    }
+
+    .book-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .book-description {
+        font-size: 14px;
+        color: #999;
+        margin-bottom: 12px;
+    }
+
+    .book-price {
+        font-size: 16px;
+        color: #00ffff;
+        font-weight: bold;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 70px;
+        background: rgba(0,0,0,0.98);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid #222;
+        z-index: 100;
+    }
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: #666;
+        font-size: 11px;
+        min-width: 60px;
+        min-height: 44px;
+        justify-content: center;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .nav-item:hover {
+        color: #00ffff;
+    }
+
+    .nav-item.active {
+        color: #00ffff;
+    }
+
+    .nav-icon {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    /* Floating Book Button */
+    .floating-book {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, #00ffff, #0088ff);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        font-weight: bold;
+        font-size: 18px;
+        z-index: 99;
+        box-shadow: 0 4px 20px rgba(0,255,255,0.5);
+        cursor: pointer;
+        animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    /* Info Panel */
+    .info-panel {
+        position: absolute;
+        top: 20px;
+        left: -320px;
+        width: 300px;
+        background: #0a0a0a;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #00ffff;
+    }
+
+    .info-panel h3 {
+        color: #00ffff;
+        margin-bottom: 16px;
+    }
+
+    .info-panel ul {
+        color: #ccc;
+        padding-left: 20px;
+        line-height: 1.8;
+    }
+
+    .info-panel li {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .info-panel {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="info-panel">
+<h3>p:w/soul Platform</h3>
+<ul>
+<li><strong>Primary:</strong> The Prism - anonymous story exchange</li>
+<li><strong>Secondary:</strong> Book as framework</li>
+<li><strong>Navigation:</strong> Mobile-first with bottom tabs</li>
+<li><strong>Story Length:</strong> 2500-3000 characters</li>
+<li><strong>Implementation:</strong> Ghost Pro with curated content</li>
+</ul>
+</div>
+
+<div class="phone-frame">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">p:w/soul</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- The Prism - Primary Hero -->
+        <section class="prism-hero">
+            <h1 class="prism-title">The Prism</h1>
+            <p class="prism-subtitle">Read a story. Gain perspective. Transform relationships.</p>
+
+            <!-- Story Display -->
+            <div class="story-display">
+                <div class="story-content">
+                    "For three years, I watched my mother forget my name. Each day, pieces of her disappeared – first recent memories, then decades of life, finally even how to hold a spoon. I became a stranger in her eyes, yet somehow, in those moments of complete confusion, when she'd look at me without recognition but still smile, I learned what unconditional presence means. The woman who no longer knew me taught me who I really am: not a name or a role, but a feeling of safety she could still sense, even in the fog."
+                </div>
+                <div class="story-meta">
+                    <span class="story-category">Family</span>
+                    <div class="story-stats">
+                        <span>👁 247 views</span>
+                        <span>💡 89 found helpful</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prism Actions -->
+            <div class="prism-actions">
+                <button class="btn-primary" onclick="alert('In production, this would load a random story from the curated collection')">Read Another Story</button>
+                <button class="btn-secondary" onclick="alert('In production, this would open an email form for story submission')">Share Your Story</button>
+            </div>
+
+            <!-- Community Stats -->
+            <div class="community-stats">
+                <div class="stat-item">
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Stories Shared</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">89</div>
+                    <div class="stat-label">Active Now</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">423</div>
+                    <div class="stat-label">Lives Touched</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Section - Secondary -->
+        <section class="book-section">
+            <div class="section-label">The Framework</div>
+            <div class="book-preview" onclick="alert('In production, this would link to the book purchase page')">
+                <div class="book-cover-small">Birth of the Conscious Creator</div>
+                <div class="book-info">
+                    <h3 class="book-title">Birth of the Conscious Creator</h3>
+                    <p class="book-description">Understand the methodology behind The Prism</p>
+                    <div class="book-price">Get the Framework - $12.50</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="alert('Prism - Primary Feature')">
+            <div class="nav-icon">🔮</div>
+            <span>Prism</span>
+        </div>
+        <div class="nav-item" onclick="alert('Stories Archive')">
+            <div class="nav-icon">📖</div>
+            <span>Stories</span>
+        </div>
+        <div class="nav-item" onclick="alert('Framework/Book Page')">
+            <div class="nav-icon">🧭</div>
+            <span>Framework</span>
+        </div>
+        <div class="nav-item" onclick="alert('Community Features')">
+            <div class="nav-icon">🌟</div>
+            <span>Community</span>
+        </div>
+    </div>
+
+    <!-- Floating Book Button -->
+    <div class="floating-book" onclick="alert('Quick access to book purchase')">📘</div>
+</div>
+</body>
+</html>
